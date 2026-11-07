@@ -47,6 +47,7 @@
       color: var(--ink) !important;
       font-family: Inter, "Segoe UI", Arial, sans-serif;
       line-height: 1.65;
+      overflow-x: hidden;
     }
 
     nav {
@@ -197,23 +198,59 @@
     }
 
     @media (max-width: 767px) {
+      nav > div > div {
+        display: flex !important;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+      }
+
+      nav > div > div > div:first-child {
+        flex: 1 1 auto;
+        min-width: 0;
+      }
+
       nav > div > div > div:nth-child(2) {
         display: flex !important;
         order: 3;
         width: 100%;
-        gap: 1.25rem;
+        gap: 1rem;
         overflow-x: auto;
-        padding: 0.35rem 0 0.5rem;
+        padding: 0.4rem 0 0.5rem;
         white-space: nowrap;
         scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
       }
 
       nav > div > div > div:nth-child(2)::-webkit-scrollbar {
         display: none;
       }
 
+      nav > div > div > div:nth-child(2) a {
+        white-space: nowrap;
+        font-size: 0.8rem;
+      }
+
+      nav > div > div > div:nth-child(3) {
+        width: 100%;
+        order: 4;
+      }
+
       nav > div > div > div:nth-child(3) a {
-        padding: 0.55rem 0.75rem !important;
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 0.7rem 0.9rem !important;
+      }
+
+      #about > div,
+      #skills > div,
+      #experience > div,
+      #certifications > div,
+      #education > div,
+      footer > div {
+        padding-left: 1rem;
+        padding-right: 1rem;
       }
 
       #about > div {
@@ -233,19 +270,98 @@
       }
 
       #about .flex-wrap > span {
-        padding: 0.35rem 0 !important;
+        width: 100%;
+        justify-content: flex-start;
+        padding: 0.5rem 0.75rem !important;
         background: transparent !important;
         border: 0 !important;
         box-shadow: none !important;
       }
 
+      #experience .space-y-8 {
+        gap: 1.25rem !important;
+      }
+
       #experience .relative > div.bg-white {
+        width: 100% !important;
         padding: 1rem !important;
+        margin-left: 0 !important;
+      }
+
+      #experience .relative {
+        display: block !important;
+      }
+
+      #experience .relative > div:first-child {
+        margin: 0 0 0.75rem !important;
+        transform: none !important;
       }
 
       #experience .relative > div.bg-white > div:first-child {
         flex-wrap: wrap;
         gap: 0.25rem 0.75rem;
+      }
+
+      #skills .grid > div,
+      #certifications .grid > div,
+      #education .bg-white {
+        padding: 1.25rem !important;
+      }
+
+      .text-3xl,
+      h2 {
+        font-size: clamp(1.8rem, 7vw, 2.5rem) !important;
+      }
+
+      .text-xl,
+      h3 {
+        font-size: 1.1rem !important;
+      }
+
+      .text-lg {
+        font-size: 1.05rem !important;
+      }
+
+      footer .flex-wrap {
+        gap: 0.9rem 1.2rem;
+      }
+
+      footer a {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      #about .space-y-6 > * + * {
+        margin-top: 1rem;
+      }
+
+      #about h1 {
+        max-width: 100%;
+      }
+
+      .px-4 {
+        padding-left: 0.85rem !important;
+        padding-right: 0.85rem !important;
+      }
+
+      .sm\:px-6,
+      .lg\:px-8 {
+        padding-left: 0.85rem !important;
+        padding-right: 0.85rem !important;
+      }
+
+      #skills ul,
+      #experience ul {
+        padding-left: 1rem;
+      }
+
+      #experience li,
+      #skills li,
+      #certifications p,
+      #education p {
+        line-height: 1.6;
       }
     }
 
@@ -302,7 +418,7 @@
             Fiber Optics & Telecommunications <span class="text-sky-600">Specialist</span>
           </h1>
           <p class="text-lg text-slate-600 leading-relaxed">
-            Dedicated telecommunications professional with <strong class="text-slate-900">6+ years of hands-on experience</strong> specializing in fiber optic FTTH/FTTx infrastructure, fusion splicing, OTDR diagnostics, Ethernet/VoIP configuration, and subscriber line maintenance across Italy and the Philippines.
+            Dedicated telecommunications professional with <strong class="text-slate-900">6+ years of hands-on experience</strong> specializing in fiber optic FTTH/FTTx infrastructure, fusion splicing, and network maintenance.
           </p>
           
           <div class="flex flex-wrap gap-4 text-sm text-slate-600 pt-2">
@@ -325,7 +441,7 @@
               <i class="fa-solid fa-envelope"></i>
               <span>Email Me</span>
             </a>
-            <a href="https://www.linkedin.com/in/ymc1031" target="_blank" class="bg-white hover:bg-slate-50 border border-slate-300 text-slate-700 font-semibold px-6 py-3 rounded-lg transition flex items-center space-x-2 shadow-xs">
+            <a href="https://www.linkedin.com/in/ymc1031" target="_blank" class="bg-white hover:bg-slate-50 border border-slate-300 text-slate-700 font-semibold px-6 py-3 rounded-lg transition flex items-center space-x-2">
               <i class="fa-brands fa-linkedin text-sky-600"></i>
               <span>LinkedIn Profile</span>
             </a>
@@ -457,7 +573,7 @@
 
         <!-- Experience Item 2 -->
         <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
-          <div class="flex items-center justify-center w-8 h-8 rounded-full bg-slate-200 text-sky-700 shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 border border-slate-300 font-bold text-sm shadow-xs">
+          <div class="flex items-center justify-center w-8 h-8 rounded-full bg-slate-200 text-sky-700 shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 border border-slate-200 shadow-sm font-bold text-sm">
             2
           </div>
           <div class="w-[calc(100%-2.5rem)] md:w-[calc(50%-2rem)] bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
@@ -477,7 +593,7 @@
 
         <!-- Experience Item 3 -->
         <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
-          <div class="flex items-center justify-center w-8 h-8 rounded-full bg-slate-200 text-sky-700 shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 border border-slate-300 font-bold text-sm shadow-xs">
+          <div class="flex items-center justify-center w-8 h-8 rounded-full bg-slate-200 text-sky-700 shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 border border-slate-200 shadow-sm font-bold text-sm">
             3
           </div>
           <div class="w-[calc(100%-2.5rem)] md:w-[calc(50%-2rem)] bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
@@ -498,7 +614,7 @@
 
         <!-- Experience Item 4 -->
         <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
-          <div class="flex items-center justify-center w-8 h-8 rounded-full bg-slate-200 text-sky-700 shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 border border-slate-300 font-bold text-sm shadow-xs">
+          <div class="flex items-center justify-center w-8 h-8 rounded-full bg-slate-200 text-sky-700 shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 border border-slate-200 shadow-sm font-bold text-sm">
             4
           </div>
           <div class="w-[calc(100%-2.5rem)] md:w-[calc(50%-2rem)] bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
@@ -601,7 +717,7 @@
           </h2>
           <div class="bg-white p-6 rounded-xl border border-slate-200 space-y-4 shadow-sm">
             <div>
-              <div class="flex justify-between text-sm mb-1">
+              <div class="flex justify-between text-sm mb-1 gap-2">
                 <span class="text-slate-900 font-semibold">Filipino (Tagalog)</span>
                 <span class="text-sky-600 font-bold">Native (C2)</span>
               </div>
@@ -611,7 +727,7 @@
             </div>
 
             <div>
-              <div class="flex justify-between text-sm mb-1">
+              <div class="flex justify-between text-sm mb-1 gap-2">
                 <span class="text-slate-900 font-semibold">English</span>
                 <span class="text-sky-600 font-bold">Proficient (C1/C2)</span>
               </div>
@@ -621,7 +737,7 @@
             </div>
 
             <div>
-              <div class="flex justify-between text-sm mb-1">
+              <div class="flex justify-between text-sm mb-1 gap-2">
                 <span class="text-slate-900 font-semibold">Italian</span>
                 <span class="text-sky-600 font-bold">Basic (A2)</span>
               </div>
